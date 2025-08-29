@@ -1,0 +1,1 @@
+# Prototyp_Glossar_Log7-Consult
