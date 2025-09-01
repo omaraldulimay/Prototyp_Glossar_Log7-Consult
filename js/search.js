@@ -41,3 +41,29 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
         resultsDiv.innerHTML = "<p>Keine Treffer gefunden.</p>";
     }
 });
+
+// ===== Formular zum Hinzufügen =====
+document.getElementById("addForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const term = document.getElementById("newTerm").value.trim();
+    const url = document.getElementById("newUrl").value.trim();
+    const aliases = document.getElementById("newAliases").value
+        .split(",")
+        .map(a => a.trim())
+        .filter(a => a !== "");
+
+    if (term === "" || url === "") {
+        document.getElementById("addResult").textContent = "Begriff und URL sind erforderlich.";
+        return;
+    }
+
+    // Neuen Begriff zum Glossar hinzufügen
+    glossary.push({ term, url, aliases });
+
+    document.getElementById("addResult").textContent = `Begriff "${term}" erfolgreich hinzugefügt!`;
+
+    // Formular zurücksetzen
+    document.getElementById("addForm").reset();
+});
+
